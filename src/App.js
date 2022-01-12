@@ -57,11 +57,13 @@ const App = () => {
     setWarband(newWarband)
   }
   return (
-    <div>
-      <h1>Warband builder</h1>
-      <h3>Choose your faction and point limit</h3>
-      <NationSelector handleNationChange={handleNationChange} handleMaxPointChange={handleMaxPointChange}/>
-        {selectedNation &&
+    <div className='app'>
+      <div className='selectorDiv'>
+        <h1>Warband builder</h1>
+        <h3>Choose your faction and point limit</h3>
+        <NationSelector handleNationChange={handleNationChange} handleMaxPointChange={handleMaxPointChange}/>
+      </div>
+      {selectedNation &&
         <div className='container'>
           <UnitList 
             unitsData={allNationData} 

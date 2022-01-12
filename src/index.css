@@ -1,0 +1,70 @@
+.container {
+  display: grid;
+  grid-template-columns: 4fr 4fr;
+  grid-template-rows: auto auto;
+  column-gap: 10rem;
+}
+
+.unitcard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  border: 2px solid black;
+  margin-bottom: 1rem;
+  border-radius: 2%;
+}
+
+.initialStatsDiv{
+  text-align: center;
+  grid-column: 1/4;
+}
+
+.initialStatsTableDiv{
+  text-align: center;
+  display: table;
+  grid-column: 1/4;
+}
+
+.initialStatsTable{
+  text-align: center;
+}
+
+.finalUnitCard {
+  border: 2px solid blue;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 5fr 2fr 2fr;
+  grid-template-rows: auto auto;
+}
+
+.unitQuantityContainer {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.quantityButton {
+  display: inline-block;
+  border-radius: 20%;
+}
+
+.unitQuantity {
+  display: inline-block;
+  margin-inline: 5px;
+}
+
+.unitCost {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: lightgray;
+}
+
+.unitShowOptionButton {
+  text-align: center;
+  grid-column: 1/4;
+}
+
+
+.unitOptionsSelector {
+  grid-column: 1/4;
+}

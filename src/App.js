@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 const App = () => {
   const [allNationData, setAllNationData] = useState([])
   const [selectedNation, setSelectedNation] = useState(null)
+  const [pointLimit, setPointLimit] = useState(250)
   const [warband, setWarband] = useState([])
 
   useEffect(() => {
@@ -25,6 +26,12 @@ const App = () => {
     event.target.value !== "null" 
       ? setSelectedNation(event.target.value)
       : setSelectedNation(null)
+  }
+
+  const handleMaxPointChange = (event) => {
+    event.preventDefault()
+    setPointLimit(event.target.value)
+    console.log(event.target.value)
   }
 
   const generateId = () => {
@@ -49,28 +56,26 @@ const App = () => {
     const newWarband = warband.map(u => u.unitId !== updatedUnit.unitId ? u : updatedUnit)
     setWarband(newWarband)
   }
-
-
-  console.log('App was rendered')
   return (
     <div>
       <h1>Warband builder</h1>
       <h3>Choose your faction and point limit</h3>
-      <NationSelector handleNationChange={handleNationChange}/>
-      <div className='container'>
+      <NationSelector handleNationChange={handleNationChange} handleMaxPointChange={handleMaxPointChange}/>
         {selectedNation &&
+        <div className='container'>
           <UnitList 
             unitsData={allNationData} 
             selectedNation={selectedNation} 
             handleAdd={addUnitToWarband}
           />
+          <UserWarband 
+            warband={warband}
+            pointLimit={pointLimit}
+            removeUnit={removeUnitFromWarband}
+            updateUnitInWarband={updateUnitInWarband}
+          />
+        </div>
         }
-        <UserWarband 
-          warband={warband}
-          removeUnit={removeUnitFromWarband}
-          updateUnitInWarband={updateUnitInWarband}
-        />
-      </div>
     </div>
   )
 }

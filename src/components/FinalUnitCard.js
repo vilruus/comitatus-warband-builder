@@ -80,8 +80,6 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
     setQuantity(newQuantity)
   }
 
-  console.log('Final Unit Card was rendered')
-
   return (
     <div className='finalUnitCard'>
       <p className='unitName'><b>{unit.name}</b></p>

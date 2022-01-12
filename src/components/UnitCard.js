@@ -21,12 +21,7 @@ const UnitCard = ({ unit, handleAdd }) => {
     <div className='unitcard'>
       <p><b>{unit.name}</b></p>
       <p><b>{unit.denarii}</b></p>
-      <button value={unit.name} style={{ marginLeft: '5px'}} onClick={handleAddLocal}>Add</button>
-      <div className='initialStatsDiv'>
-        <button className='initialStatsButton' onClick={handleShowButton}>{showButtonTitle}</button>
-      </div>
-      {statsVisible && <p>huutista</p>
-      }
+      <button value={unit.name} onClick={handleAddLocal}>Add</button>
     </div>
   )
 }

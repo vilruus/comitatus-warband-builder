@@ -1,7 +1,7 @@
 import FinalUnitCard from './FinalUnitCard'
 import React, {useEffect, useState } from 'react'
 
-const UserWarband = ({ warband, removeUnit, updateUnitInWarband }) => {
+const UserWarband = ({ warband, pointLimit, removeUnit, updateUnitInWarband }) => {
   const [warbandCost, setWarbandCost] = useState(0)
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const UserWarband = ({ warband, removeUnit, updateUnitInWarband }) => {
 
   return (
     <div>
-      <h1>Your warband {warbandCost}</h1>
+      <h1>Your warband {warbandCost}/{pointLimit}</h1>
       {warband.map(unit => 
         <FinalUnitCard key={unit.unitId} unit={unit} removeUnit={removeUnit} updateUnitInWarband={updateUnitInWarband} />
       )}

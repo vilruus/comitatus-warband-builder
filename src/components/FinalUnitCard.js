@@ -4,7 +4,7 @@ import OptionSelector from './OptionSelector'
 const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
   const [quantity, setQuantity] = useState(1)
   const [cost, setCost] = useState(0)
-  const [showOptions, setShowOptions] = useState(true)
+  const [showOptions, setShowOptions] = useState(false)
   const [selectedOptions, setSelectedOptions] = useState([])
 
   const torsoAmourOptions = unit.options.filter(item => item.type === "torso")

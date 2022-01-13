@@ -6,7 +6,7 @@ import UserWarband from './components/UserWarband'
 import { v4 as uuidv4 } from 'uuid'
 
 const App = () => {
-  const [allNationData, setAllNationData] = useState([])
+  const [Data, setData] = useState([])
   const [selectedNation, setSelectedNation] = useState(null)
   const [pointLimit, setPointLimit] = useState(250)
   const [warband, setWarband] = useState([])
@@ -15,7 +15,7 @@ const App = () => {
     async function fetchNations() {
       const url = 'http://localhost:3001/nations'
       const response = await axios.get(url)
-      setAllNationData(response.data)
+      setData(response.data)
     }
     fetchNations()
   }, [])
@@ -58,15 +58,14 @@ const App = () => {
   }
   return (
     <div className='app'>
+      <h1>Warband builder</h1>
       <div className='selectorDiv'>
-        <h1>Warband builder</h1>
-        <h3>Choose your faction and point limit</h3>
         <NationSelector handleNationChange={handleNationChange} handleMaxPointChange={handleMaxPointChange}/>
       </div>
       {selectedNation &&
         <div className='container'>
           <UnitList 
-            unitsData={allNationData} 
+            unitsData={Data} 
             selectedNation={selectedNation} 
             handleAdd={addUnitToWarband}
           />

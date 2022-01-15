@@ -15,7 +15,6 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
     } else {return false}
   }
 
-  //Hallinnoi yksikön lukuisuuden muutoksen (mikäli alittaa pienimmän sallitun niin poistaa yksikön)
   const minus = (event) => {
     event.preventDefault()
     const removableId = event.target.value
@@ -52,7 +51,7 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
     updateUnitInWarband(unit)
   }
 
-  const QuantityController = (type) => {
+  const quantityController = (type) => {
     if (unit.type === "Infantry Minion" || unit.type === "Cavalry Minion") {
       return(
         <div className='unitQuantityContainer'>
@@ -93,20 +92,18 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
         {list.map(item => 
           <p key={item.name}>
             <button onClick={wearItem} value={item.name}>+</button>
-            {item.name}
+            {item.name} {item.denarii} d
           </p>)}
       </div>
     )
   }
-
-  console.log('rendered card')
 
   return (
     <div className='finalUnitCard'>
       <p>
         <b>{unit.name}</b>
       </p>
-      {QuantityController(unit.type)}
+      {quantityController(unit.type)}
       <p>
         <b>{unit.cost} d</b>
       </p>

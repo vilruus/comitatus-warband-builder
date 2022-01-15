@@ -69,11 +69,13 @@
           "armour": "+3",
           "wounds": "2",
           "denarii": "36",
-          "options": [
+          "equipped": [
             {"name": "Large Shield", "denarii": 0, "optionType":"armour", "type":"shield", "default": 1},
             {"name": "Lorica Segmentata", "denarii": 0, "optionType":"armour", "type": "torso", "default":1 },
             {"name": "Pila", "denarii": 0, "optionType":"equipments", "type": "personal", "default":1 },
-            {"name": "Sword", "denarii": 0, "optionType":"weapons", "type": "close combat", "default":1 },
+            {"name": "Sword", "denarii": 0, "optionType":"weapons", "type": "close combat", "default":1 }
+          ],
+          "options": [
             {"name": "chainmail short, Horse and Long Spear", "denarii": 10, "optionType": "equipments", "type":"personal", "default":0 },
             {"name": "Horn", "denarii": 10, "optionType": "equipments", "type":"unit", "default":0 },
             {"name": "Standard", "denarii": 25, "optionType": "equipments", "type": "unit", "default":0 }
@@ -92,10 +94,12 @@
           "armour": "+3",
           "wounds": "1",
           "denarii": "8",
+          "equipped": [
+            {"name": "Chainmail Shirt", "denarii": 0, "optionType": "armour", "type":"torso", "default": 1},
+            {"name": "Large Shield", "denarii": 0, "optionType":"armour", "type":"shield", "default": 1},
+            {"name": "Sword", "denarii": 0, "optionType":"weapons", "type": "close combat", "default":1 }
+          ],
           "options": [
-              {"name": "Chainmail Shirt", "denarii": 0, "optionType": "armour", "type":"torso", "default": 1},
-              {"name": "Large Shield", "denarii": 0, "optionType":"armour", "type":"shield", "default": 1},
-              {"name": "Sword", "denarii": 0, "optionType":"weapons", "type": "close combat", "default":1 },
               {"name": "Short Spear", "denarii": 2, "optionType":"weapons", "type":"close combat", "default":0 },
               {"name": "Horn", "denarii": 10,"optionType":"equipments", "type": "unit", "default":0 },
               {"name": "Standard", "denarii": 25,"optionType":"equipments" ,"type": "unit", "default":0 }
@@ -114,9 +118,11 @@
           "armour": "+3",
           "wounds": "1",
           "denarii": "8",
+          "equipped": [
+            {"name": "Bow", "denarii": 0, "optionType": "weapons", "type": "ranged", "default": 1},
+            {"name": "Chainmail Shirt", "denarii": 0, "optionType":"armour", "type":"torso", "default": 1}
+          ],
           "options": [
-              {"name": "Bow", "denarii": 0, "optionType": "weapons", "type": "ranged", "default": 1},
-              {"name": "Chainmail Shirt", "denarii": 0, "optionType":"armour", "type":"torso", "default": 1},
               {"name": "Sword", "denarii": 3,"optionType":"weapons", "type":"close combat", "default":0 },
               {"name": "Horn", "denarii": 10, "optionType":"equipments", "type": "unit", "default":0 },
               {"name": "Standard", "denarii": 25, "optionType":"equipments", "type": "unit", "default":0 }
@@ -135,11 +141,13 @@
           "armour": "+3",
           "wounds": "1",
           "denarii": "25",
-          "options": [
+          "equipped": [
             {"name": "Chainmail Shirt", "denarii": 0, "optionType":"armour", "type":"torso", "default": 1},
             {"name": "Horse", "denarii": 0, "optionType": "equipments", "type": "personal", "default": 1},
             {"name": "Large Shield", "denarii": 0, "optionType":"armour", "type":"shield", "default": 1},
-            {"name": "Sword", "denarii": 0,"optionType":"weapons", "type":"close combat", "default":1 },
+            {"name": "Sword", "denarii": 0,"optionType":"weapons", "type":"close combat", "default":1 }
+          ],
+          "options": [
             {"name": "Short Spear", "denarii": 2, "optionType":"weapons" , "type":"close combat", "default":0 },
             {"name": "Horse to Camel", "denarii": 5,"optionType":"equipments", "type": "personal", "default":0 },
             {"name": "Horn", "denarii": 10,"optionType":"equipments", "type": "unit", "default":0 },
@@ -159,6 +167,7 @@
           "armour": "+1",
           "wounds": "4",
           "denarii": "80",
+          "equipped": [],
           "options": []
         }
       ]

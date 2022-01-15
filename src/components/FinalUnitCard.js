@@ -13,6 +13,20 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
   const rangedOptions = unit.options.filter(item => item.type === 'ranged')
   const equipmentOptions = unit.options.filter(item => item.optionType ===  'equipments')
 
+
+  useEffect(() => {
+    const defaultLoadout = unit.options.filter(option => option.default === 1)
+    for (let i = 0; i < defaultLoadout.length; i++) {
+      for (const [key, value] of Object.entries(defaultLoadout[i])) {
+        if (key === "name") {
+          console.log(value)
+          continue
+        }
+      }
+    }
+    console.log(defaultLoadout)
+  },[])
+
   const haveOptions = (array) => {
     if (array.length !== 0) {
       return true
@@ -82,7 +96,7 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
 
   return (
     <div className='finalUnitCard'>
-      <p className='unitName'><b>{unit.name}</b></p>
+      <p className='unitName'><b>{unit.name}</b>{selectedOptions}</p>
       <div className='unitQuantityContainer'>
         <button onClick={minus} value={unit.unitId} className='quantityButton'>-</button>
         <p className='unitQuantity'>{quantity}</p>
@@ -90,16 +104,16 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
       </div>
       <p className='unitCost'><b>{cost} d</b></p>
       <div className='unitShowOptionButton'>
-        <button onClick={() => setShowOptions(!showOptions)}>show options</button>
+        <button onClick={() => setShowOptions(!showOptions)}>show upgrades</button>
       </div>
       {showOptions &&
         <div className='unitOptionsSelector'>
           <form onChange={handleOptionChange}>
-            { haveOptions(torsoAmourOptions) && <OptionSelector title="torso" list={torsoAmourOptions} /> }
-            { haveOptions(shieldArmourOptions) && <OptionSelector title="shield" list={shieldArmourOptions} /> }
-            { haveOptions(closeCombatOptions) && <OptionSelector title="close combat" list={closeCombatOptions} /> }
-            { haveOptions(rangedOptions) && <OptionSelector title="ranged" list={rangedOptions} /> }
-            { haveOptions(equipmentOptions) && <OptionSelector title="other equipments" list={equipmentOptions} /> }
+            { haveOptions(torsoAmourOptions) && <OptionSelector title="torso" list={torsoAmourOptions} inputType={"checkbox"} /> }
+            { haveOptions(shieldArmourOptions) && <OptionSelector title="shield" list={shieldArmourOptions} inputType={"checkbox"} /> }
+            { haveOptions(closeCombatOptions) && <OptionSelector title="close combat" list={closeCombatOptions} inputType={"checkbox"}/> }
+            { haveOptions(rangedOptions) && <OptionSelector title="ranged" list={rangedOptions} inputType={"checkbox"} /> }
+            { haveOptions(equipmentOptions) && <OptionSelector title="other equipments" list={equipmentOptions} inputType={"checkbox"}/> }
           </form>
         </div>
       }

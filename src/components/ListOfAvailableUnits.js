@@ -1,7 +1,7 @@
 import React from 'react'
 import UnitCard from './UnitCard'
 
-const UnitList = ({ unitsData, selectedNation, handleAdd }) => {
+const UnitList = ({ unitsData, selectedNation, addUnitToWarband }) => {
   const showableFaction = unitsData.find(faction => faction.name === selectedNation )
   
   if (showableFaction) {
@@ -12,7 +12,7 @@ const UnitList = ({ unitsData, selectedNation, handleAdd }) => {
         {showableFaction.units.map(unit => 
           <UnitCard key={unit.name}
             unit={unit}
-            handleAdd={handleAdd}
+            addUnitToWarband={addUnitToWarband}
           />
         )}
       </div>

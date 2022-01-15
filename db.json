@@ -6,6 +6,7 @@
         {
           "name": "Hero",
           "type": "Infantry Hero",
+          "quantity": 1,
           "move": "6",
           "ranged": "+1",
           "melee": "+2",
@@ -15,6 +16,7 @@
           "armour": "+0",
           "wounds": "2",
           "denarii": "50",
+          "equipped": [],
           "options": [
               {"name": "Large Shield", "denarii": 5, "optionType": "armour","type": "shield", "default":0 },
               {"name": "Cuirass","denarii": 15,"type": "torso","optionType": "armour", "default":0 },
@@ -30,6 +32,7 @@
         {
           "name": "Legionary",
           "type": "Infantry Minion",
+          "quantity": 5,
           "move": "5",
           "ranged": "+1",
           "melee": "+2",
@@ -39,11 +42,13 @@
           "armour": "+3",
           "wounds": "1",
           "denarii": "24",
+          "equipped": [
+            {"name": "Chainmail Shirt", "denarii": 0, "optionType": "armour", "type": "torso", "default":1 },
+            {"name": "Large Shield", "denarii": 0, "optionType":"armour", "type":"shield", "default": 1},
+            {"name": "Sword", "denarii": 0, "optionType":"weapons", "type": "close combat", "default":1 }
+          ],
           "options": [
-              {"name": "Chainmail Shirt", "denarii": 0, "optionType": "armour", "type": "torso", "default":1 },
               {"name": "Lorica Segmentata", "denarii": 2, "optionType":"armour", "type": "torso", "default":0 },
-              {"name": "Large Shield", "denarii": 0, "optionType":"armour", "type":"shield", "default": 1},
-              {"name": "Sword", "denarii": 0, "optionType":"weapons", "type": "close combat", "default":1 },
               {"name": "Slings", "denarii": 3, "optionType":"weapons","type":"ranged", "default":0 },
               {"name": "Pila", "denarii": 3, "optionType":"equipments", "type": "personal", "default":0 },
               {"name": "Horn", "denarii": 10, "optionType":"equipments", "type": "unit", "default":0 },
@@ -54,6 +59,7 @@
         {
           "name": "Praetorian Guard",
           "type": "Infantry Minion",
+          "quantity": 5,
           "move": "5",
           "ranged": "+2",
           "melee": "+3",
@@ -76,6 +82,7 @@
         {
           "name": "Auxiliary",
           "type": "Infantry Minion",
+          "quantity": 5,
           "move": "5",
           "ranged": "+1",
           "melee": "+1",
@@ -97,6 +104,7 @@
         {
           "name": "Auxiliary Archer",
           "type": "Infantry Minion",
+          "quantity": 5,
           "move": "5",
           "ranged": "+1",
           "melee": "+1",
@@ -117,6 +125,7 @@
         {
           "name": "Auxiliary Cavalryman",
           "type": "Cavalry Minion",
+          "quantity": 5,
           "move": "6",
           "ranged": "+1",
           "melee": "+1",
@@ -140,6 +149,7 @@
         {
           "name": "Scorpio Team",
           "type": "Scorpio",
+          "quantity": 1,
           "move": "-",
           "ranged": "-",
           "melee": "-",

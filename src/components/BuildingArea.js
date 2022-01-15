@@ -11,8 +11,23 @@ const BuildingArea = ({ data, selectedNation, pointLimit }) => {
     return id
   }
 
+  const updateUnitPrice = (unit) => {
+    let cost = 0
+
+    for (let i = 0; i < unit.equipped.length; i++) {
+      if (unit.equipped[i].type === "unit") {
+        cost = cost + unit.equipped[i].denarii
+      } else {
+        cost += unit.quantity*unit.equipped[i].denarii
+      }
+    }
+    cost += unit.quantity*unit.denarii
+    return cost
+  }
+
   const addUnitToWarband = (unit) => {
     const newUnit = Object.assign({}, unit)
+    newUnit.cost = updateUnitPrice(unit)
     const id = generateId()
     newUnit.unitId = id
     setWarband(warband.concat(newUnit))
@@ -24,6 +39,7 @@ const BuildingArea = ({ data, selectedNation, pointLimit }) => {
   }
 
   const updateUnitInWarband = (unit) => {
+    unit.cost = updateUnitPrice(unit)
     const updatedUnit = unit
     const newWarband = warband.map(u => u.unitId !== updatedUnit.unitId ? u : updatedUnit)
     setWarband(newWarband)

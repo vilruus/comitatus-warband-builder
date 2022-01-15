@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import OptionSelector from './OptionSelector'
 
 const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
-  const [quantity, setQuantity] = useState(1)
-  const [cost, setCost] = useState(0)
   const [showOptions, setShowOptions] = useState(false)
-  const [selectedOptions, setSelectedOptions] = useState([])
 
   const torsoAmourOptions = unit.options.filter(item => item.type === "torso")
   const shieldArmourOptions = unit.options.filter(item => item.type === "shield")
@@ -13,110 +9,116 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
   const rangedOptions = unit.options.filter(item => item.type === 'ranged')
   const equipmentOptions = unit.options.filter(item => item.optionType ===  'equipments')
 
-
-  useEffect(() => {
-    const defaultLoadout = unit.options.filter(option => option.default === 1)
-    for (let i = 0; i < defaultLoadout.length; i++) {
-      for (const [key, value] of Object.entries(defaultLoadout[i])) {
-        if (key === "name") {
-          console.log(value)
-          continue
-        }
-      }
-    }
-    console.log(defaultLoadout)
-  },[])
-
   const haveOptions = (array) => {
     if (array.length !== 0) {
       return true
     } else {return false}
   }
 
-  const handleOptionChange = (event) => {
-    const item = event.target.value
-    if (event.target.checked === true) {
-      addOption(item)
-    } else {
-      removeOption(item)
-    }
-  }
-
-  const addOption = (item) => {
-    setSelectedOptions(selectedOptions.concat(item))
-  }
-
-  const removeOption = (item) => {
-    const newOptions = selectedOptions.filter(o => o !== item)
-    setSelectedOptions(newOptions)
-  }
-
-  //Asettaa yksikön lukuisuuden (minioneilla pienin mahdollinen 5 ja hero/tykistö ovat yksin)
-  useEffect(() => {
-    if (unit.type !== "Infantry Hero" && unit.type !== "Scorpio") {
-      setQuantity(5)
-    }
-  }, [])
-
-  //Laskee yksikön lopullisen hinnan
-  useEffect(() => {
-    let totalCost = quantity*unit.denarii
-    for (let i = 0; i < selectedOptions.length; i++) {
-      const option = unit.options.find(item => item.name === selectedOptions[i])
-      if (option.optionType === "equipments" && option.type === "unit") {
-        totalCost += option.denarii
-      } else {
-        totalCost += option.denarii*quantity
-      }}
-    setCost(totalCost)
-    unit["currentCost"] = totalCost
-    updateUnitInWarband(unit)
-  }, [quantity, selectedOptions])
-
   //Hallinnoi yksikön lukuisuuden muutoksen (mikäli alittaa pienimmän sallitun niin poistaa yksikön)
   const minus = (event) => {
     event.preventDefault()
     const removableId = event.target.value
 
-    if ((unit.type === "Infantry Hero" || unit.type === "Cavalry Hero" || unit.type === "Scorpio") && quantity === 1) {
+    if (unit.type === "Infantry Hero" || unit.type === "Cavalry Hero" || unit.type === "Scorpio") {
       removeUnit(removableId)
-    } else if ((unit.type === 'Infantry Minion' || unit.type === 'Cavalry Minion') && quantity < 6) {
+    } else if ((unit.type === 'Infantry Minion' || unit.type === 'Cavalry Minion') && unit.quantity < 6) {
       removeUnit(removableId)
     } else {
-    const newQuantity = quantity -1
-    setQuantity(newQuantity)
+    unit.quantity -= 1
+    updateUnitInWarband(unit)
     }
   }
 
   const plus = (event) => {
     event.preventDefault()
-    const newQuantity = quantity + 1
-    setQuantity(newQuantity)
+    unit.quantity += 1
+    updateUnitInWarband(unit)
   }
+
+  const dropItem = (event) => {
+    event.preventDefault()
+    const itemToRemove = unit.equipped.find(item => item.name === event.target.value)
+    unit.equipped = unit.equipped.filter(item => item.name !== itemToRemove.name)
+    unit.options = unit.options.concat(itemToRemove)
+    updateUnitInWarband(unit)
+  }
+
+  const wearItem = (event) => {
+    event.preventDefault()
+    const itemToWear = unit.options.find(item => item.name === event.target.value)
+    unit.equipped = unit.equipped.concat(itemToWear)
+    unit.options = unit.options.filter(item => item.name !== itemToWear.name)
+    updateUnitInWarband(unit)
+  }
+
+  const QuantityController = (type) => {
+    if (unit.type === "Infantry Minion" || unit.type === "Cavalry Minion") {
+      return(
+        <div className='unitQuantityContainer'>
+          <button onClick={minus} value={unit.unitId} className='quantityButton'>-</button>
+          <p className='unitQuantity'>{unit.quantity}</p>
+          <button onClick={plus} className='quantityButton'>+</button>
+        </div>
+      )
+    } else {
+      return(
+        <div className='unitQuantityContainer'>
+          <button onClick={minus} value={unit.unitId} className='quantityButton'>-</button>
+          <p className='unitQuantity'>{unit.quantity}</p>
+        </div>
+      )
+    }
+  }
+
+  const equippedItems = () => {
+    const equipped = unit.equipped.map(item => item)
+
+    return (
+      <div>
+        <h3>Equipped</h3>
+        {equipped.map(item => 
+          <p key={item.name}>
+            <button onClick={dropItem} value={item.name}>-</button>
+            {item.name}
+          </p>)}
+      </div>
+    )
+  }
+
+  const optionsAvailable = (title, list) => {
+    return (
+      <div>
+        <h3>{title}</h3>
+        {list.map(item => 
+          <p key={item.name}>
+            <button onClick={wearItem} value={item.name}>+</button>
+            {item.name}
+          </p>)}
+      </div>
+    )
+  }
+
+  console.log('rendered card')
 
   return (
     <div className='finalUnitCard'>
-      <p className='unitName'><b>{unit.name}</b>{selectedOptions}</p>
-      <div className='unitQuantityContainer'>
-        <button onClick={minus} value={unit.unitId} className='quantityButton'>-</button>
-        <p className='unitQuantity'>{quantity}</p>
-        <button onClick={plus} className='quantityButton'>+</button>
-      </div>
-      <p className='unitCost'><b>{cost} d</b></p>
+      <p>
+        <b>{unit.name}</b>
+      </p>
+      {QuantityController(unit.type)}
+      <p>
+        <b>{unit.cost} d</b>
+      </p>
       <div className='unitShowOptionButton'>
         <button onClick={() => setShowOptions(!showOptions)}>show upgrades</button>
       </div>
-      {showOptions &&
-        <div className='unitOptionsSelector'>
-          <form onChange={handleOptionChange}>
-            { haveOptions(torsoAmourOptions) && <OptionSelector title="torso" list={torsoAmourOptions} inputType={"checkbox"} /> }
-            { haveOptions(shieldArmourOptions) && <OptionSelector title="shield" list={shieldArmourOptions} inputType={"checkbox"} /> }
-            { haveOptions(closeCombatOptions) && <OptionSelector title="close combat" list={closeCombatOptions} inputType={"checkbox"}/> }
-            { haveOptions(rangedOptions) && <OptionSelector title="ranged" list={rangedOptions} inputType={"checkbox"} /> }
-            { haveOptions(equipmentOptions) && <OptionSelector title="other equipments" list={equipmentOptions} inputType={"checkbox"}/> }
-          </form>
-        </div>
-      }
+      {showOptions && equippedItems()}
+      {showOptions && haveOptions(torsoAmourOptions) && optionsAvailable("Torso", torsoAmourOptions)}
+      {showOptions && haveOptions(shieldArmourOptions) && optionsAvailable("Shield", shieldArmourOptions)}
+      {showOptions && haveOptions(closeCombatOptions) && optionsAvailable("Close combat", closeCombatOptions)}
+      {showOptions && haveOptions(rangedOptions) && optionsAvailable("Ranged", rangedOptions)}
+      {showOptions && haveOptions(equipmentOptions) && optionsAvailable("Other", equipmentOptions)}
     </div>
   )
 }

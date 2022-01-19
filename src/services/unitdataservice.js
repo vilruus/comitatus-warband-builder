@@ -1,14 +1,9 @@
 import axios from 'axios'
-
-const baseUrl = 'http://localhost:3001/nations'
+const baseUrl = '/api/nations'
 
 const getAll = () => {
-  axios
-    .get(baseUrl)
-    .then(response => {
-      const nationsData = response.data
-      return nationsData
-  })
-}
+  const request = axios.get(baseUrl)
+  return request.then(response => response.data)
+  }
 
 export default { getAll }

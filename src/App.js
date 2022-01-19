@@ -1,4 +1,4 @@
-import axios from 'axios'
+import unitService from './services/unitdataservice'
 import React, { useEffect, useState } from 'react'
 import BuildingArea from './components/BuildingArea'
 import NationSelector from './components/NationSelector'
@@ -9,12 +9,11 @@ const App = () => {
   const [pointLimit, setPointLimit] = useState(250)
 
   useEffect(() => {
-    async function fetchNations() {
-      const url = 'http://localhost:3001/nations'
-      const response = await axios.get(url)
-      setData(response.data)
-    }
-    fetchNations()
+    unitService
+      .getAll()
+        .then(data => {
+          setData(data)
+        })
   }, [])
 
   const handleNationChange = (event) => {

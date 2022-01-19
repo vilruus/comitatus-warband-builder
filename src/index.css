@@ -1,3 +1,11 @@
+/* To be structured and cleaned */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .app {
   display:grid;
 }
@@ -11,31 +19,6 @@
   grid-template-columns: 4fr 4fr;
   grid-template-rows: auto auto;
   column-gap: 10rem;
-}
-
-.unitcard {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  border: 2px solid black;
-  background-color: ;
-  margin-bottom: 1rem;
-  border-radius: 2%;
-}
-
-.initialStatsDiv{
-  text-align: center;
-  grid-column: 1/4;
-}
-
-.initialStatsTableDiv{
-  text-align: center;
-  display: table;
-  grid-column: 1/4;
-}
-
-.initialStatsTable{
-  text-align: center;
 }
 
 .finalUnitCard {
@@ -81,7 +64,103 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  text-align: center;
+}
+
 .unitRoster {
-  border: 2px black solid;
-  background-color:;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.unitRosterTitle {
+  grid-column: 1/4
+}
+
+.unitRosterCard {
+  display: grid;
+  width: auto;
+  grid-template-rows: auto 7fr auto auto /* 2fr 7fr 2fr 0.5fr; */;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 3px solid black;
+  background-color: rgba(189, 19, 19, 0.719);
+  color: antiquewhite;
+  margin: 1rem;
+  border-radius: 2%;
+  text-align: center;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.unitRosterCard:hover {
+  box-shadow: 0 8px 8px 0 rgb(23, 24, 1);
+  background-color: rgba(126, 12, 12, 0.719);
+  transition: 0.3s;
+  transform: translateY(-10px);
+}
+
+.unitRosterCardDenarii {
+  grid-column: 3/3;
+  margin: 0;
+  padding-top: 0.4em;
+  margin-top: 0.5em;
+  font-size: x-large;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  border: 2px solid rgb(98, 98, 89);
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+  background-color: silver;
+}
+
+.unitRosterCardDenarii p {
+  height: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto;
+  font-size: x-large;
+}
+
+.unitRosterCardTitle {
+  grid-column: 1/4;
+  margin: 0%;
+  margin-top: 1em;
+  padding: 0.5em;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  background-color: gray;
+}
+
+.unitRosterCardAvatar {
+  grid-column: 1/4;
+  display: block;
+  margin: auto;
+  padding: 1em;
+}
+
+.unitRosterCardAvatar img {
+  height: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.unitRosterCardButton {
+  grid-column: 1/4;
+}
+
+.unitRosterCardStats {
+  grid-column: 1/4;
+  display: block;
+  margin: auto;
+}
+
+.unitRosterCardStats p {
+  text-align: left;
+  font-size: large;
+  height: 100%;
+  max-width: 100%;
+  display: block;
+  margin:auto;
 }

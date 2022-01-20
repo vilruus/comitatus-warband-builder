@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
   const [showOptions, setShowOptions] = useState(false)

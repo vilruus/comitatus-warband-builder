@@ -129,12 +129,16 @@ h2 {
 }
 
 .finalUnitCard {
-  border: 2px solid black;
+  background-color: #e3e0cd;
+  color: #444443;
+  border: 3px solid black;
+  border-radius: 3%;
   margin-bottom: 1rem;
   display: grid;
   grid-template-columns: 5fr 2fr 2fr;
   grid-template-rows: auto auto;
   padding: 1em 1em 0em 1em
+  
 }
 
 .finalUnitCardOptionSection {

@@ -74,8 +74,8 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
     const equipped = unit.equipped.map(item => item)
 
     return (
-      <div>
-        <h3>Equipped</h3>
+      <div className='finalUnitCardOptionSection'>
+        <h4>Equipped</h4>
         {equipped.map(item => 
           <p key={item.name}>
             <button onClick={dropItem} value={item.name}>-</button>
@@ -87,8 +87,8 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
 
   const optionsAvailable = (title, list) => {
     return (
-      <div>
-        <h3>{title}</h3>
+      <div className='finalUnitCardOptionSection'>
+        <h4>{title}</h4>
         {list.map(item => 
           <p key={item.name}>
             <button onClick={wearItem} value={item.name}>+</button>

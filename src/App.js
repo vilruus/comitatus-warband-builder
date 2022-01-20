@@ -26,17 +26,23 @@ const App = () => {
   const handleMaxPointChange = (event) => {
     event.preventDefault()
     setPointLimit(event.target.value)
-    console.log(event.target.value)
   }
 
   return (
     <div className='app'>
-      <h1>Warband builder</h1>
+      <h1>COMITATUS</h1>
       <div className='selectorDiv'>
-        <NationSelector handleNationChange={handleNationChange} handleMaxPointChange={handleMaxPointChange}/>
+        <NationSelector 
+          handleNationChange={handleNationChange} 
+          handleMaxPointChange={handleMaxPointChange}
+        />
       </div>
       {selectedNation &&
-      <BuildingArea data={data} selectedNation={selectedNation} pointLimit={pointLimit} />
+        <BuildingArea 
+          data={data} 
+          selectedNation={selectedNation} 
+          pointLimit={pointLimit} 
+        />
       }
     </div>
   )

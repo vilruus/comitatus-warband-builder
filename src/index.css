@@ -6,22 +6,19 @@
   box-sizing: border-box;
 }
 
-h1 {
-  text-align: center;
-  font-family: serif ;
-}
-
-h2 {
-  text-align: center;
+:root {
+  --nation-clr: rgba(189, 19, 19, 0.719);
+  --nation-clr-dark: rgba(126, 12, 12, 0.719);
 }
 
 .app {
   display:grid;
   margin: 2rem;
+  text-align: center;
 }
 
-.selectorDiv {
-  text-align: center;
+h1 {
+  font-family: serif ;
 }
 
 .container {
@@ -43,21 +40,20 @@ h2 {
 .unitRosterCard {
   display: grid;
   width: auto;
-  grid-template-rows: auto 7fr auto auto /* 2fr 7fr 2fr 0.5fr; */;
+  grid-template-rows: auto 7fr auto auto;
   grid-template-columns: 1fr 1fr 1fr;
   border: 3px solid black;
-  background-color: rgba(189, 19, 19, 0.719);
+  background-color: var(--nation-clr);
   color: antiquewhite;
   margin: 1rem;
   border-radius: 2%;
-  text-align: center;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   cursor: pointer;
 }
 
 .unitRosterCard:hover {
   box-shadow: 0 8px 8px 0 rgb(23, 24, 1);
-  background-color: rgba(126, 12, 12, 0.719);
+  background-color: var(--nation-clr-dark);
   transition: 0.3s;
   transform: translateY(-10px);
 }
@@ -179,7 +175,6 @@ h2 {
 }
 
 .unitShowOptionButton {
-  text-align: center;
   grid-column: 1/4;
 }
 

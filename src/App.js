@@ -26,13 +26,9 @@ const App = () => {
 
   const handleColorThemeChange = (nation) => {
     let faction = data.find(n => n.name === nation)
-    console.log(faction)
-    let color = faction.themeColor
-    let darkColor = faction.themeColorDark
     let root = document.documentElement
-    root.style.setProperty('--nation-clr', color)
-    root.style.setProperty('--nation-clr-dark', darkColor)
-    console.log(color, darkColor)
+    root.style.setProperty('--nation-clr', faction.themeColor)
+    root.style.setProperty('--nation-clr-dark', faction.themeColorDark)
   }
 
   const handleMaxPointChange = (event) => {

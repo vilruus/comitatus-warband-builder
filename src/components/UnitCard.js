@@ -4,6 +4,7 @@ import heroIcon from '../images/heroIcon.png'
 import archerIcon from '../images/archeryIcon.png'
 import artilleryIcon from '../images/artilleryIcon.png'
 import cavalryIcon from '../images/cavalryIcon.png'
+import { getByDisplayValue } from '@testing-library/react'
 
 const UnitCard = ({ unit, addUnitToWarband }) => {
   const [backSide, setBackSide] = useState(false)
@@ -55,19 +56,19 @@ const UnitCard = ({ unit, addUnitToWarband }) => {
   const backSideView = () => {
     return (
       <div className='unitRosterCard'>
-      <p className='unitRosterCardDenarii' ><b>{unit.denarii}</b></p>
-      <div className='unitRosterCardStats' onClick={() => setBackSide(!backSide)}>
-        <p> move: {unit.move}" </p>
-        <p>ranged: {unit.ranged} </p>
-        <p> melee: {unit.melee} </p>
-        <p> melee dices: {unit.meleedice}</p>
-        <p>agility: {unit.agility}</p>
-        <p>bravery: {unit.bravery}</p>
-        <p>armour: {unit.armour}</p>
-        <p>wounds: {unit.wounds}</p>
-      </div>
-      <p className='unitRosterCardTitle'><b>{unit.name}</b></p>
-      <button className='unitRosterCardButton' value={unit.name} onClick={handleAddLocal}>Add</button>
+        <p className='unitRosterCardDenarii' ><b>{unit.denarii}</b></p>
+        <div className='unitRosterCardStats' onClick={() => setBackSide(!backSide)}>
+          <p> move: {unit.move}" </p>
+          <p>ranged: {unit.ranged} </p>
+          <p> melee: {unit.melee} </p>
+          <p> melee dices: {unit.meleedice}</p>
+          <p>agility: {unit.agility}</p>
+          <p>bravery: {unit.bravery}</p>
+          <p>armour: {unit.armour}</p>
+          <p>wounds: {unit.wounds}</p>
+        </div>
+        <p className='unitRosterCardTitle'><b>{unit.name}</b></p>
+        <button className='unitRosterCardButton' value={unit.name} onClick={handleAddLocal}>Add</button>
     </div>
     )
   }

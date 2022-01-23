@@ -23,14 +23,15 @@ h1 {
 
 .container {
   display: grid;
-  grid-template-columns: 4fr 4fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  column-gap: 5rem;
+  column-gap: auto;
 }
 
 .unitRoster {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto;
+  min-width: 100%;
 }
 
 .unitRosterTitle {
@@ -39,7 +40,7 @@ h1 {
 
 .unitRosterCard {
   display: grid;
-  width: auto;
+  max-width: 200px;
   grid-template-rows: auto 7fr auto auto;
   grid-template-columns: 1fr 1fr 1fr;
   border: 3px solid black;
@@ -113,15 +114,19 @@ h1 {
   grid-column: 1/4;
   display: block;
   margin: auto;
-}
+  }
 
 .unitRosterCardStats p {
   text-align: left;
-  font-size: large;
-  height: 100%;
+  font-size: medium;
+  min-height: 100%;
   max-width: 100%;
   display: block;
   margin:auto;
+}
+
+.warbandView {
+  min-width: 50%;
 }
 
 .finalUnitCard {
@@ -134,7 +139,7 @@ h1 {
   grid-template-columns: 5fr 2fr 2fr;
   grid-template-rows: auto auto;
   padding: 1em 1em 0em 1em
-  
+
 }
 
 .finalUnitCardOptionSection {
@@ -164,8 +169,8 @@ h1 {
 
 .unitQuantity {
   display: inline-block;
-  margin-inline: 5px;
-}
+  margin-inline: 0.5rem;
+  }
 
 .unitCost {
   text-align: center;
@@ -181,3 +186,32 @@ h1 {
 .unitOptionsSelector {
   grid-column: 1/4;
 }
+
+@media (max-width: 900px) {
+  .app {
+    margin: 0.5rem;
+  }
+
+  h1 {
+    color: aqua;
+  }
+
+  .container {
+    display: inline-block;
+  }
+
+  .unitRoster {
+    display: inline-flexbox;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .unitRosterCard {
+    font-size: small;
+  }
+
+  .unitRosterCardStats{
+    font-size: x-small;
+  }
+
+  }

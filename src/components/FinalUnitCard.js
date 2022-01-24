@@ -79,7 +79,7 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
         {equipped.map(item => 
           <p key={item.name}>
             <button onClick={dropItem} value={item.name}>-</button>
-            {item.name}
+            {item.name} {item.denarii} d
           </p>)}
       </div>
     )
@@ -92,7 +92,7 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
         {list.map(item => 
           <p key={item.name}>
             <button onClick={wearItem} value={item.name}>+</button>
-            {item.name} {item.denarii} d
+            {item.name} {item.denarii} d 
           </p>)}
       </div>
     )
@@ -100,7 +100,7 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
 
   return (
     <div className='finalUnitCard'>
-      <p>
+      <p className='finalUnitCardTitle'>
         <b>{unit.name}</b>
       </p>
       {quantityController(unit.type)}

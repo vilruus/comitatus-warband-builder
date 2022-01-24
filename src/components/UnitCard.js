@@ -4,7 +4,6 @@ import heroIcon from '../images/heroIcon.png'
 import archerIcon from '../images/archeryIcon.png'
 import artilleryIcon from '../images/artilleryIcon.png'
 import cavalryIcon from '../images/cavalryIcon.png'
-import { getByDisplayValue } from '@testing-library/react'
 
 const UnitCard = ({ unit, addUnitToWarband }) => {
   const [backSide, setBackSide] = useState(false)

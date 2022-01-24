@@ -25,8 +25,8 @@ const App = () => {
   }
 
   const handleColorThemeChange = (nation) => {
-    let faction = data.find(n => n.name === nation)
-    let root = document.documentElement
+    const faction = data.find(n => n.name === nation)
+    const root = document.documentElement
     root.style.setProperty('--nation-clr', faction.themeColor)
     root.style.setProperty('--nation-clr-dark', faction.themeColorDark)
   }

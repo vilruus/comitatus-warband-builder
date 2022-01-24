@@ -9,12 +9,15 @@ const UnitList = ({ unitsData, selectedNation, addUnitToWarband }) => {
     return (
       <div className='unitRoster'>
         <h2 className='unitRosterTitle'>Available units for {selectedNation}</h2>
-        {showableFaction.units.map(unit => 
-          <UnitCard key={unit.name}
-            unit={unit}
-            addUnitToWarband={addUnitToWarband}
-          />
-        )}
+        <div className='unitRosterCardsContainer'>
+          {showableFaction.units.map(unit => 
+            <UnitCard 
+              key={unit.name}
+              unit={unit}
+              addUnitToWarband={addUnitToWarband}
+            />
+          )}
+        </div>
       </div>
     )
   } else {

@@ -1,4 +1,5 @@
 import FinalUnitCard from './FinalUnitCard'
+import React from 'react'
 
 const UserWarband = ({ warband, pointLimit, removeUnit, updateUnitInWarband }) => {
 
@@ -23,7 +24,7 @@ const UserWarband = ({ warband, pointLimit, removeUnit, updateUnitInWarband }) =
   return (
     <div className='warbandView'>
       <h2>Your warband {totalWarbandCost} /{pointLimit}</h2>
-      {sortUnitsByType(warband).map(unit => 
+      {sortUnitsByType(warband).map(unit =>
         <FinalUnitCard key={unit.unitId} unit={unit} removeUnit={removeUnit} updateUnitInWarband={updateUnitInWarband} />
       )}
     </div>

@@ -47,7 +47,9 @@ const UnitCard = ({ unit, addUnitToWarband }) => {
         <div className='unitRosterCardAvatar' onClick={() => setBackSide(!backSide)}>
           {unitImage()}
         </div>
-        <p className='unitRosterCardTitle'><b>{unit.name}</b></p>
+        <div className='unitRosterCardTitle'>
+          <p><b>{unit.name}</b></p>
+        </div>
         <button className='unitRosterCardButton' value={unit.name} onClick={handleAddLocal}>Add</button>
       </div>
     )}
@@ -66,7 +68,9 @@ const UnitCard = ({ unit, addUnitToWarband }) => {
           <p>armour: {unit.armour}</p>
           <p>wounds: {unit.wounds}</p>
         </div>
-        <p className='unitRosterCardTitle'><b>{unit.name}</b></p>
+        <div className='unitRosterCardTitle'>
+          <p><b>{unit.name}</b></p>
+        </div>
         <button className='unitRosterCardButton' value={unit.name} onClick={handleAddLocal}>Add</button>
     </div>
     )

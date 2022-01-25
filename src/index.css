@@ -34,12 +34,11 @@ h2 {
 
 .unitRosterTitle {
   grid-column: 1/4;
-  
 }
 
 .unitRosterCardsContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   align-items: flex-start;
   align-content: flex-start;
 
@@ -48,7 +47,7 @@ h2 {
 .unitRosterCard {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto 5fr auto auto;
+  grid-template-rows: auto auto auto auto;
 
   width: 10rem;
   border: 0.3rem solid black;
@@ -87,11 +86,18 @@ h2 {
 }
 
 .unitRosterCardTitle {
+  display: flex;
+  justify-content: center;
   grid-column: 1/4;
   margin: 1rem 0rem 0rem 0rem;
-  padding: 0.5rem;
+  padding: auto;
   border: 0.2rem solid black;
   background-color: gray;
+  height: 3rem;
+}
+
+.unitRosterCardTitle p {
+  margin: auto;
 }
 
 .unitRosterCardAvatar {

@@ -7,11 +7,11 @@ const UserWarband = ({ warband, pointLimit, removeUnit, updateUnitInWarband }) =
 
   const sortUnitsByType = (listOfUnits) => {
     const compare = (a, b) => {
-      if ((a.type === "Infantry Hero" || a.type === "Cavalry Hero") && ((b.type === "Infantry Hero" || b.type === "Cavalry Hero"))) {
+      if ((a.type === 'Infantry Hero' || a.type === 'Cavalry Hero') && ((b.type === 'Infantry Hero' || b.type === 'Cavalry Hero'))) {
         return 0
-      } else if (a.type === "Infantry Hero" || a.type === "Cavalry Hero") {
+      } else if (a.type === 'Infantry Hero' || a.type === 'Cavalry Hero') {
         return -1
-      } else if (b.type === "Infantry Hero" || b.type === "Cavalry Hero") {
+      } else if (b.type === 'Infantry Hero' || b.type === 'Cavalry Hero') {
         return 1
       }
       return 0

@@ -11,14 +11,14 @@ const App = () => {
   useEffect(() => {
     unitService
       .getAll()
-        .then(data => {
-          setData(data)
-        })
+      .then(data => {
+        setData(data)
+      })
   }, [])
 
   const handleNationChange = (event) => {
     event.preventDefault()
-    event.target.value !== "null" 
+    event.target.value !== 'null'
       ? setSelectedNation(event.target.value)
       : setSelectedNation(null)
     handleColorThemeChange(event.target.value)
@@ -40,16 +40,16 @@ const App = () => {
     <div className='app'>
       <h1>COMITATUS</h1>
       <div className='selectorDiv'>
-        <NationSelector 
-          handleNationChange={handleNationChange} 
+        <NationSelector
+          handleNationChange={handleNationChange}
           handleMaxPointChange={handleMaxPointChange}
         />
       </div>
       {selectedNation &&
-        <BuildingArea 
-          data={data} 
-          selectedNation={selectedNation} 
-          pointLimit={pointLimit} 
+        <BuildingArea
+          data={data}
+          selectedNation={selectedNation}
+          pointLimit={pointLimit}
         />
       }
     </div>

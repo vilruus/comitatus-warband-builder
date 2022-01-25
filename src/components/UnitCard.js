@@ -53,13 +53,13 @@ const UnitCard = ({ unit, addUnitToWarband }) => {
         <button className='unitRosterCardButton' value={unit.name} onClick={handleAddLocal}>Add</button>
       </div>
     )}
-  
+
   const backSideView = () => {
     return (
       <div className='unitRosterCard'>
         <p className='unitRosterCardDenarii' ><b>{unit.denarii}</b></p>
         <div className='unitRosterCardStats' onClick={() => setBackSide(!backSide)}>
-          <p> move: {unit.move}" </p>
+          <p> move: {unit.move} </p>
           <p>ranged: {unit.ranged} </p>
           <p> melee: {unit.melee} </p>
           <p> melee dices: {unit.meleedice}</p>
@@ -72,10 +72,10 @@ const UnitCard = ({ unit, addUnitToWarband }) => {
           <p><b>{unit.name}</b></p>
         </div>
         <button className='unitRosterCardButton' value={unit.name} onClick={handleAddLocal}>Add</button>
-    </div>
+      </div>
     )
   }
-  
+
   return(
     <>
       {backSide ? backSideView() : frontSideView()}

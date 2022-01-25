@@ -119,6 +119,7 @@ h2 {
 
 .unitRosterCardStats {
   grid-column: 1/4;
+  padding: 0.3rem;
   display: block;
   margin: auto;
   }

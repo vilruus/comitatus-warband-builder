@@ -29,16 +29,19 @@ h2 {
 
 .unitRoster {
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 1fr;
 }
 
 .unitRosterTitle {
   grid-column: 1/4;
+  
 }
 
 .unitRosterCardsContainer {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
 
 }
 

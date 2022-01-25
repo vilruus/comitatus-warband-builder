@@ -144,7 +144,8 @@ h2 {
   color: #444443;
   border: 0.3rem solid black;
   border-radius: 2%;
-  max-width: 100%
+  max-width: 100%;
+  margin-bottom: 1rem;
 }
 
 .finalUnitCard p {
@@ -165,6 +166,7 @@ h2 {
 .finalUnitCardOptionSection p {
   display: inline-flex;
   padding-right: 1rem;
+  margin-bottom: 0%;
 }
 
 .unitQuantityContainer {

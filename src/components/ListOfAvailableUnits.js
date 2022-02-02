@@ -3,12 +3,12 @@ import UnitCard from './UnitCard'
 
 const UnitList = ({ unitsData, selectedNation, addUnitToWarband }) => {
   const showableFaction = unitsData.find(faction => faction.name === selectedNation )
+  const formatedFactionName = selectedNation.toUpperCase()
 
   if (showableFaction) {
-
     return (
       <div className='unitRoster'>
-        <h2 className='unitRosterTitle'>Available units for {selectedNation}</h2>
+        <h2 className='unitRosterTitle'>AVAILABLE UNITS FOR {formatedFactionName}</h2>
         <div className='unitRosterCardsContainer'>
           {showableFaction.units.map(unit =>
             <UnitCard

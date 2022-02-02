@@ -23,7 +23,7 @@ const UserWarband = ({ warband, pointLimit, removeUnit, updateUnitInWarband }) =
 
   return (
     <div className='warbandView'>
-      <h2>Your warband {totalWarbandCost} /{pointLimit}</h2>
+      <h2>YOUR WARBAND {totalWarbandCost}/{pointLimit}</h2>
       {sortUnitsByType(warband).map(unit =>
         <FinalUnitCard key={unit.unitId} unit={unit} removeUnit={removeUnit} updateUnitInWarband={updateUnitInWarband} />
       )}

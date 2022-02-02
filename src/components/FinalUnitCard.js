@@ -51,23 +51,17 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
     updateUnitInWarband(unit)
   }
 
+  const unitAtMaxQuantity = () => unit.quantity !== 30
+  const isMinion = () => unit.type.search('Minion') !== -1
+
   const quantityController = () => {
-    if (unit.type === 'Infantry Minion' || unit.type === 'Cavalry Minion') {
-      return(
-        <div className='unitQuantityContainer'>
-          <button onClick={minus} value={unit.unitId} className='quantityButton'>-</button>
-          <p className='unitQuantity'>{unit.quantity}</p>
-          <button onClick={plus} className='quantityButton'>+</button>
-        </div>
-      )
-    } else {
-      return(
-        <div className='unitQuantityContainer'>
-          <button onClick={minus} value={unit.unitId} className='quantityButton'>-</button>
-          <p className='unitQuantity'>{unit.quantity}</p>
-        </div>
-      )
-    }
+    return(
+      <div className='unitQuantityContainer'>
+        <button onClick={minus} value={unit.unitId} className='quantityButton'>-</button>
+        <p className='unitQuantity'>{unit.quantity}</p>
+        {unitAtMaxQuantity() && isMinion() && <button onClick={plus} className='quantityButton'>+</button>}
+      </div>
+    )
   }
 
   const equippedItems = () => {

@@ -13,13 +13,10 @@ const BuildingArea = ({ data, selectedNation, pointLimit }) => {
 
   const updateUnitPrice = (unit) => {
     let cost = 0
-
     for (let i = 0; i < unit.equipped.length; i++) {
-      if (unit.equipped[i].type === 'unit') {
-        cost = cost + unit.equipped[i].denarii
-      } else {
-        cost += unit.quantity*unit.equipped[i].denarii
-      }
+      unit.equipped[i].type === 'unit'
+        ? cost += unit.equipped[i].denarii
+        : cost += unit.quantity*unit.equipped[i].denarii
     }
     cost += unit.quantity*unit.denarii
     return cost

@@ -3,7 +3,7 @@ import React from 'react'
 const NationSelector = ({ handleNationChange, handleMaxPointChange }) => {
   return (
     <>
-      <h3>Choose your faction and point limit</h3>
+      <h2>Choose your faction and point limit</h2>
       <form  onChange={handleNationChange}>
         <label htmlFor="faction-selector">Choose a nation: </label>
         <br/>

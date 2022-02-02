@@ -9,27 +9,21 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
   const rangedOptions = unit.options.filter(item => item.type === 'ranged')
   const equipmentOptions = unit.options.filter(item => item.optionType ===  'equipments')
 
-  const haveOptions = (array) => {
-    if (array.length !== 0) {
-      return true
-    } else {return false}
-  }
+  const haveOptions = optionsArr => optionsArr.length > 0
 
-  const minus = (event) => {
+  const handleMinusButtonClick = (event) => {
     event.preventDefault()
     const removableId = event.target.value
-
-    if (unit.type === 'Infantry Hero' || unit.type === 'Cavalry Hero' || unit.type === 'Scorpio') {
-      removeUnit(removableId)
-    } else if ((unit.type === 'Infantry Minion' || unit.type === 'Cavalry Minion') && unit.quantity < 6) {
-      removeUnit(removableId)
-    } else {
+    const minusAndUpdate = () => {
       unit.quantity -= 1
       updateUnitInWarband(unit)
     }
+    return unit.quantity <=  5
+      ? removeUnit(removableId)
+      : minusAndUpdate()
   }
 
-  const plus = (event) => {
+  const handlePlusButtonClick = (event) => {
     event.preventDefault()
     unit.quantity += 1
     updateUnitInWarband(unit)
@@ -57,9 +51,9 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
   const quantityController = () => {
     return(
       <div className='unitQuantityContainer'>
-        <button onClick={minus} value={unit.unitId} className='quantityButton'>-</button>
+        <button onClick={handleMinusButtonClick} value={unit.unitId} className='quantityButton'>-</button>
         <p className='unitQuantity'>{unit.quantity}</p>
-        {!unitAtMaxQuantity() && isMinion() && <button onClick={plus} className='quantityButton'>+</button>}
+        {!unitAtMaxQuantity() && isMinion() && <button onClick={handlePlusButtonClick} className='quantityButton'>+</button>}
       </div>
     )
   }

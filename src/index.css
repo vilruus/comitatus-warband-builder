@@ -22,7 +22,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .container {
@@ -139,10 +139,8 @@ h2 {
   min-width: 50%;
 }
 
+
 .finalUnitCard {
-  display: grid;
-  grid-template-columns: 5fr 2fr 2fr;
-  grid-template-rows: auto auto;
   padding: 1rem 1rem 0rem 1rem;
   background-color: #e3e0cd;
   color: #444443;
@@ -152,25 +150,14 @@ h2 {
   margin-bottom: 1rem;
 }
 
+.finalUnitCardHeader {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-rows: auto auto;
+}
+
 .finalUnitCard p {
   font-size: 1.1rem;
-}
-
-.finalUnitCardOptionSection {
-  grid-column: 1/4;
-  font-size: 1rem;
-}
-
-.finalUnitCardOptionSection h4 {
-  text-align: center;
-  margin-bottom: 0%;
-  border-bottom: 0.1rem solid black;
-}
-
-.finalUnitCardOptionSection p {
-  display: inline-flex;
-  padding-right: 1rem;
-  margin-bottom: 0%;
 }
 
 .unitQuantityContainer {
@@ -188,19 +175,13 @@ h2 {
   margin-inline: 0.5rem;
   }
 
-.unitCost {
-  text-align: center;
-  border: 0.1rem solid black;
-  border-radius: 50%;
-  background-color: lightgray;
-}
-
 .unitShowOptionButton {
   grid-column: 1/4;
 }
 
-.unitOptionsSelector {
-  grid-column: 1/4;
+.optionManagementContainer{
+  display: grid;
+  grid-template-columns: 2fr 2fr;
 }
 
 @media (max-width: 900px) {

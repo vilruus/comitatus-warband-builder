@@ -3,14 +3,6 @@ import React, { useState } from 'react'
 const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
   const [showOptions, setShowOptions] = useState(false)
 
-  const torsoAmourOptions = unit.options.filter(item => item.type === 'torso')
-  const shieldArmourOptions = unit.options.filter(item => item.type === 'shield')
-  const closeCombatOptions = unit.options.filter(item => item.type === 'close combat')
-  const rangedOptions = unit.options.filter(item => item.type === 'ranged')
-  const equipmentOptions = unit.options.filter(item => item.optionType ===  'equipments')
-
-  const haveOptions = optionsArr => optionsArr.length > 0
-
   const handleMinusButtonClick = (event) => {
     event.preventDefault()
     const removableId = event.target.value
@@ -59,11 +51,9 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
   }
 
   const equippedItems = () => {
-    const equipped = unit.equipped.map(item => item)
-
+    const equipped = unit.equipped
     return (
       <div className='finalUnitCardOptionSection'>
-        <h4>Equipped</h4>
         {equipped.map(item =>
           <p key={item.name}>
             <button onClick={dropItem} value={item.name}>-</button>
@@ -73,11 +63,11 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
     )
   }
 
-  const optionsAvailable = (title, list) => {
+  const optionsAvailable = () => {
+    const options = unit.options
     return (
       <div className='finalUnitCardOptionSection'>
-        <h4>{title}</h4>
-        {list.map(item =>
+        {options.map(item =>
           <p key={item.name}>
             <button onClick={wearItem} value={item.name}>+</button>
             {item.name} {item.denarii} d
@@ -88,22 +78,30 @@ const FinalUnitCard = ({ unit, removeUnit, updateUnitInWarband } ) => {
 
   return (
     <div className='finalUnitCard'>
-      <p className='finalUnitCardTitle'>
-        <b>{unit.name}</b>
-      </p>
-      {quantityController(unit.type)}
-      <p>
-        <b>{unit.cost} d</b>
-      </p>
-      <div className='unitShowOptionButton'>
-        <button onClick={() => setShowOptions(!showOptions)}>show upgrades</button>
+      <div className='finalUnitCardHeader'>
+        <p className='finalUnitCardHeaderTitle'>
+          <b>{unit.name}</b>
+        </p>
+        {quantityController(unit.type)}
+        <p>
+          <b>{unit.cost} d</b>
+        </p>
+        <div className='unitShowOptionButton'>
+          <button onClick={() => setShowOptions(!showOptions)}>{showOptions ? 'hide upgrades' : 'show upgrades'}</button>
+        </div>
       </div>
-      {showOptions && equippedItems()}
-      {showOptions && haveOptions(torsoAmourOptions) && optionsAvailable('Torso', torsoAmourOptions)}
-      {showOptions && haveOptions(shieldArmourOptions) && optionsAvailable('Shield', shieldArmourOptions)}
-      {showOptions && haveOptions(closeCombatOptions) && optionsAvailable('Close combat', closeCombatOptions)}
-      {showOptions && haveOptions(rangedOptions) && optionsAvailable('Ranged', rangedOptions)}
-      {showOptions && haveOptions(equipmentOptions) && optionsAvailable('Other', equipmentOptions)}
+      {showOptions &&
+      <div className='optionManagementContainer'>
+        <div className='optionsMenu'>
+          <h3>Available</h3>
+          {optionsAvailable()}
+        </div>
+        <div className='equippedMenu'>
+          <h3>Equipped</h3>
+          {equippedItems()}
+        </div>
+      </div>
+      }
     </div>
   )
 }
